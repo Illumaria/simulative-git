@@ -1,3 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 This line was added in the homeworl branch!
 >>>>>>> e29acfe (Update experiment.txt)
+=======
+This line was added in the homework branch!
+>>>>>>> 7c83c10 (Fixed the bag experiments->homework)
