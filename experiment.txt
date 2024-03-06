@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-This line was added in the master branch!
-=======
-This line was added in the experiment branch!
->>>>>>> e29acfe (Update experiment.txt)
+This line was added in the homework branch!
