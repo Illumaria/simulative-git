@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-his line was added in the homework branch!
-=======
-This line was added in the master branch!
->>>>>>> 7ce2190bad18cfc1225269fec67c91e69c47b765
+This line was added in the homework branch!
