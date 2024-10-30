@@ -1,8 +1,2 @@
-<<<<<<< HEAD
 This line was added in the experiment branch!
 
-
-
-=======
-This line was added in the homework branch!
->>>>>>> 0979fb0 (Fix  experimet.txt)
