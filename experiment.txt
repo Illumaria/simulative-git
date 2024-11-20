@@ -1,6 +1,1 @@
-<<<<<<< HEAD
-This line was added in the experiment branch!
-
-=======
 This line was added in the homework branch!
->>>>>>> d189418 (Update file experiment.txt)
