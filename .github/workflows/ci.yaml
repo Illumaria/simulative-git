@@ -19,4 +19,7 @@ jobs:
           echo "${{ github.repository }}"
           echo "${{ github.ref }}"
           echo "${{ github.ref_name }}"
+          echo "${{ github.event.pull_request.head.repo.full_name }}"
+          echo "${{ github.event.pull_request.head.ref }}"
+          echo "${{ github.event.pull_request.head.ref_name }}"
 
