@@ -15,6 +15,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Check fork
+        if: ${{ !cancelled() }}
         run: |
           if [[ "${{ github.repository }}" != "${{ github.event.pull_request.head.repo.full_name }}" ]]; then
             echo "Success: PR is created from a fork"
@@ -24,6 +25,7 @@ jobs:
           fi
 
       - name: Check branch name
+        if: ${{ !cancelled() }}
         run: |
           if [[ "${{ github.event.pull_request.head.ref }}" == "homework" ]]; then
               echo "Success: PR source branch is 'homework'"
