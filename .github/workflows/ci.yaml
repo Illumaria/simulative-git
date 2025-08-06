@@ -38,6 +38,7 @@ jobs:
           fi
 
       - name: Check commit count
+        if: ${{ !cancelled() }}
         run: |
           # Получаем хэши базовой и головной веток PR
           BASE_SHA=${{ github.event.pull_request.base.sha }}
