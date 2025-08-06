@@ -14,12 +14,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Check fork
+        run: |
+          if [[ "${{ github.repository }}" != "${{ github.event.pull_request.head.repo.full_name }}" ]]; then
+            echo "Success: PR is created from a fork"
+          else
+            echo "Error: PR is created from '${{ github.event.pull_request.head.repo.full_name }}'"
+            exit 1
+          fi
+
       - name: Check branch name
         run: |
-          echo "${{ github.repository }}"
-          echo "${{ github.ref }}"
-          echo "${{ github.ref_name }}"
-          echo "${{ github.event.pull_request.head.repo.full_name }}"
-          echo "${{ github.event.pull_request.head.ref }}"
-          echo "${{ github.event.pull_request.head.ref_name }}"
-
+          if [[ "${{ github.event.pull_request.head.ref }}" == "homework" ]]; then
+              echo "Success: PR source branch is 'homework'"
+          else
+            echo "Error: PR source branch is '${{ github.event.pull_request.head.ref }}'"
+            exit 1
+          fi
