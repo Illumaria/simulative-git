@@ -1,0 +1,22 @@
+name: Assignment Checking
+
+on:
+  push:
+    branches:
+      - setup-actions
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check branch name
+        run: |
+          echo "${{ github.repository }}"
+          echo "${{ github.ref }}"
+          echo "${{ github.ref_name }}"
+
