@@ -12,7 +12,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Check fork
         if: ${{ !cancelled() }}
@@ -32,4 +35,23 @@ jobs:
           else
             echo "Error: PR source branch is '${{ github.event.pull_request.head.ref }}'"
             exit 1
+          fi
+
+      - name: Check commit count
+        run: |
+          # Получаем хэши базовой и головной веток PR
+          BASE_SHA=${{ github.event.pull_request.base.sha }}
+          HEAD_SHA=${{ github.event.pull_request.head.sha }}
+          
+          # Подсчитываем количество коммитов между базой и головой PR
+          COMMIT_COUNT=$(git rev-list --count $BASE_SHA..$HEAD_SHA)
+          
+          echo "Info: Number of commits in PR: $COMMIT_COUNT"
+          
+          # Пример: Проверяем, что количество коммитов не больше 5
+          if [ "$COMMIT_COUNT" -ne 2 ]; then
+            echo "Error: Commit count in PR is incorrect, excected 2 commits, got $COMMIT_COUNT."
+            exit 1
+          else
+            echo "Success: Commit count is correct"
           fi
