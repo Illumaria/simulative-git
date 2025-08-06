@@ -1,0 +1,92 @@
+name: Assignment Checking
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check fork
+        if: ${{ !cancelled() }}
+        run: |
+          if [[ "${{ github.repository }}" != "${{ github.event.pull_request.head.repo.full_name }}" ]]; then
+            echo "Success: PR is created from a fork"
+          else
+            echo "Error: PR is created from '${{ github.event.pull_request.head.repo.full_name }}'"
+            exit 1
+          fi
+
+      - name: Check branch name
+        if: ${{ !cancelled() }}
+        run: |
+          if [[ "${{ github.event.pull_request.head.ref }}" == "homework" ]]; then
+              echo "Success: PR source branch is 'homework'"
+          else
+            echo "Error: PR source branch is '${{ github.event.pull_request.head.ref }}'"
+            exit 1
+          fi
+
+      - name: Check commit count
+        if: ${{ !cancelled() }}
+        run: |
+          # Получаем хэши базовой и головной веток PR
+          BASE_SHA=${{ github.event.pull_request.base.sha }}
+          HEAD_SHA=${{ github.event.pull_request.head.sha }}
+
+          # Подсчитываем количество коммитов между базой и головой PR
+          COMMIT_COUNT=$(git rev-list --count $BASE_SHA..$HEAD_SHA)
+
+          echo "Info: Number of commits in PR: $COMMIT_COUNT"
+
+          # Проверяем, что количество коммитов равно 2
+          if [ "$COMMIT_COUNT" -ne 2 ]; then
+            echo "Error: Commit count in PR is incorrect, excected 2 commits, got $COMMIT_COUNT"
+            exit 1
+          else
+            echo "Success: Commit count is correct"
+          fi
+
+      - name: Check changed files count
+        if: ${{ !cancelled() }}
+        run: |
+          # Получаем хэши базовой и головной веток PR
+          BASE_SHA=${{ github.event.pull_request.base.sha }}
+          HEAD_SHA=${{ github.event.pull_request.head.sha }}
+
+          # Подсчитываем количество изменённых файлов
+          FILE_COUNT=$(git diff --name-only $BASE_SHA..$HEAD_SHA | wc -l)
+
+          echo "Info: Number of changed files in PR: $FILE_COUNT"
+
+          # Проверяем, что изменён ровно 1 файл
+          if [ "$FILE_COUNT" -ne 1 ]; then
+            echo "Error: Changed files count is incorrect, expected 1 changed file, got $FILE_COUNT"
+            exit 1
+          else
+            echo "Success: Changed files count is correct"
+          fi
+
+      - name: Check base commit SHA
+        if: ${{ !cancelled() }}
+        run: |
+          # Заданный SHA, из которого должна быть создана ветка
+          EXPECTED_SHA="e29acfeee8b29ec6b18d3f4cfa0c1833293a14ec"
+
+          # SHA последнего коммита в ветке PR
+          HEAD_SHA=${{ github.event.pull_request.head.sha }}
+
+          # Проверяем, содержит ли история ветки PR ожидаемый SHA
+          if git merge-base --is-ancestor "$EXPECTED_SHA" "$HEAD_SHA"; then
+            echo "Success: PR branch is based on expected commit SHA"
+          else
+            echo "Error: PR branch is not based on expected commit SHA"
+            exit 1
+          fi
