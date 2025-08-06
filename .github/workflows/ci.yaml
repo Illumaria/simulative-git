@@ -49,10 +49,30 @@ jobs:
           
           echo "Info: Number of commits in PR: $COMMIT_COUNT"
           
-          # Пример: Проверяем, что количество коммитов не больше 5
+          # Проверяем, что количество коммитов равно 2
           if [ "$COMMIT_COUNT" -ne 2 ]; then
-            echo "Error: Commit count in PR is incorrect, excected 2 commits, got $COMMIT_COUNT."
+            echo "Error: Commit count in PR is incorrect, excected 2 commits, got $COMMIT_COUNT"
             exit 1
           else
             echo "Success: Commit count is correct"
+          fi
+
+      - name: Check changed files count
+        if: ${{ !cancelled() }}
+        run: |
+          # Получаем хэши базовой и головной веток PR
+          BASE_SHA=${{ github.event.pull_request.base.sha }}
+          HEAD_SHA=${{ github.event.pull_request.head.sha }}
+          
+          # Подсчитываем количество изменённых файлов
+          FILE_COUNT=$(git diff --name-only $BASE_SHA..$HEAD_SHA | wc -l)
+          
+          echo "Info: Number of changed files in PR: $FILE_COUNT"
+          
+          # Проверяем, что изменён ровно 1 файл
+          if [ "$FILE_COUNT" -ne 1 ]; then
+            echo "Error: Changed files count is incorrect, expected 1 changed file, got $FILE_COUNT"
+            exit 1
+          else
+            echo "Success: Changed files count is correct"
           fi
