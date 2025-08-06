@@ -1,9 +1,6 @@
 name: Assignment Checking
 
 on:
-  push:
-    branches:
-      - setup-actions
   pull_request:
     branches:
       - master
@@ -88,8 +85,8 @@ jobs:
 
           # Проверяем, содержит ли история ветки PR ожидаемый SHA
           if git merge-base --is-ancestor "$EXPECTED_SHA" "$HEAD_SHA"; then
-            echo "Success: PR branch is based on expected SHA"
+            echo "Success: PR branch is based on expected commit SHA"
           else
-            echo "Error: PR branch is not based on expected SHA"
+            echo "Error: PR branch is not based on expected commit SHA"
             exit 1
           fi
