@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-This line was added in the master branch!
-=======
 This line was added in the homework branch!
->>>>>>> 6bd367d (Fix the problem)
