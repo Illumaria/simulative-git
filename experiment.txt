@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 This line was added in the experiment branch!
 
+=======
+This line was added in the homework branch!
+>>>>>>> 07c9606 (homework commit)
