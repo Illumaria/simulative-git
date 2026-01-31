@@ -1,4 +1,68 @@
+<<<<<<< HEAD
 This line was added in the experiment branch!
+=======
+This line was added in the homework branch!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:wq
+git statue
+ 
+
+
+:wq
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:wq
+
+
+
+
+>>>>>>> 770598a (Fix experiment.txt)
 
 
 
