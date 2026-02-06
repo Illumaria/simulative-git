@@ -1,0 +1,48 @@
+[33mcommit 647f19d56898696ccd289136ed64bf509962e442[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmerge-experiment[m[33m, [m[1;31mupstream/merge-experiment[m[33m, [m[1;31morigin/merge-experiment[m[33m)[m
+Merge: e54b52f 649b073
+Author: Dmitry Astankov <astankov.dmitry@gmail.com>
+Date:   Sun Aug 27 17:25:51 2023 +0300
+
+    Merge branch 'master' into merge-experiment
+
+[33mcommit 649b0732345685bd23137c21036da5447b027fbd[m
+Author: Dmitry Astankov <astankov.dmitry@gmail.com>
+Date:   Sun Aug 27 17:20:04 2023 +0300
+
+    Master
+
+[33mcommit e54b52f51b19791e3c6ca8799398acfc4e17b733[m
+Author: Dmitry Astankov <astankov.dmitry@gmail.com>
+Date:   Sun Aug 27 17:19:31 2023 +0300
+
+    Experiment
+
+[33mcommit 07eed73b919e7c9c0a7288165d6095509c818c23[m
+Author: Dmitry Astankov <astankov.dmitry@gmail.com>
+Date:   Sun Aug 27 16:51:40 2023 +0300
+
+    Hello from new-branch
+
+[33mcommit 7642c9d4db7109ce074b305cc9f9690dfcb8937d[m
+Author: Dmitry Astankov <astankov.dmitry@gmail.com>
+Date:   Sun Aug 27 16:33:12 2023 +0300
+
+    Create README.md
+
+[33mcommit 42112637f3e9faf16109779ef842df032a0acbca[m
+Author: Dmitry Astankov <astankov.dmitry@gmail.com>
+Date:   Sun Aug 27 16:06:53 2023 +0300
+
+    Change first.txt and second.txt
+
+[33mcommit b757d44dba256ae4fbb1d214d60e5ed24ec5868d[m
+Author: Dmitry Astankov <astankov.dmitry@gmail.com>
+Date:   Sun Aug 27 15:59:46 2023 +0300
+
+    Add files first.txt and second.txt
+
+[33mcommit 93105ceee367de062f05b985777d7049f4d45d1f[m
+Author: Dmitry Astankov <astankov.dmitry@gmail.com>
+Date:   Sun Aug 27 15:55:02 2023 +0300
+
+    Initial commit
