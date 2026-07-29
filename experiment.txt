@@ -1,5 +1,8 @@
 This line was added in the homework branch!
-<<<<<<< HEAD
 
-=======
->>>>>>> cbe456a (Experiment in to homework)
+
+
+
+
+
+
